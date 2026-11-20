@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The watch capability array has no Kotlin reference (see app/lint.xml): it is read by the
+  Wear OS framework, which publishes "jellywrist_watch" to CapabilityClient. `isShrinkResources`
+  is enabled for release, so without this rule the resource shrinker is entitled to strip it —
+  silently killing companion discovery in release builds only.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@array/android_wear_capabilities" />

@@ -1,0 +1,30 @@
+.gradle/
+build/
+local.properties
+.idea/
+.kotlin/
+*.iml
+captures/
+.DS_Store
+gradle/gradle-daemon-jvm.properties
+# Release signing — never commit keys or credentials.
+keystore.properties
+*.jks
+*.keystore
+
+/omp-session-*.html
+/.zcode/plans/plan-sess_*.md
+WATCHDOG.yml
+
+# Local AI/agent session output — never publish.
+.logs/
+.zcode/
+.claude/
+.cursor/
+.remember/
+plan-sess_*
+omp-session-*
+
+# Built Android packages are release artifacts, not source.
+*.apk
+*.aab

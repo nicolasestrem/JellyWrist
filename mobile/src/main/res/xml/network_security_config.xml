@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  JellyWrist network configuration (GAP-008, decided 2026-08-08).
+
+  Cleartext traffic is ALLOWED, in both debug and release: it is a product requirement —
+  the app determines the scheme itself (probing https:// then http://, owner decision
+  2026-08-08, see UrlNormalizer.candidates), and self-hosted Jellyfin servers on plain HTTP
+  over LAN (`http://192.0.2.10:8096`, PLAN.md §3.1) are a first-class use case. Android does not
+  allow restricting cleartext to arbitrary hosts entered at runtime (`domain-config`
+  only accepts names known at compile time): the permission is therefore global — an
+  accepted and documented trade-off.
+
+  The probing order always prefers HTTPS: cleartext is only used if no HTTPS candidate
+  responds.
+
+  TLS verification is NEVER weakened (DEC-006): HTTPS is validated against system
+  authorities; opt-in pinning of a self-signed certificate is handled at runtime by
+  PinningTrustManager, scoped to the app HTTP client.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

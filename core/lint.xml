@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!--
+      Intentional architecture decisions, kept as auditable information:
+      - CustomX509TrustManager: per-server certificate pinning is deliberate
+        (DEC-006). PinningTrustManager and CertificateFetcher implement X509TrustManager
+        only for the selected server; TLS validation is never globally bypassed.
+      - TrustAllX509TrustManager: PinningTrustManager's checkClientTrusted is empty because
+        the app uses no client TLS certificates; only server trust is evaluated.
+    -->
+    <issue id="CustomX509TrustManager" severity="informational" />
+    <issue id="TrustAllX509TrustManager" severity="informational" />
+</lint>

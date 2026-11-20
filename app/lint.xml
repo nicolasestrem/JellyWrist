@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!--
+      Intentional architecture decisions, kept as auditable information:
+      - CustomX509TrustManager: per-server certificate pinning is deliberate
+        (DEC-006). PinningTrustManager and CertificateFetcher implement X509TrustManager
+        only for the selected server; TLS validation is never globally bypassed.
+      - TrustAllX509TrustManager: PinningTrustManager's checkClientTrusted is empty because
+        the app uses no client TLS certificates; only server trust is evaluated.
+      - InsecureBaseConfiguration: cleartext HTTP is globally permitted for self-hosted
+        LAN Jellyfin servers (http://…:8096). The app detects HTTPS then HTTP,
+        and Android cannot restrict cleartext traffic to hosts entered at runtime.
+        TLS verification remains intact (DEC-006); the choice is documented in
+        network_security_config.xml.
+      - ExportedService: MediaSessionService must be exported with the Media3 intent
+        filter so system controllers and Output Switcher can bind to it (REQ-009,
+        official Media3 pattern).
+    -->
+    <issue id="CustomX509TrustManager" severity="informational" />
+    <issue id="TrustAllX509TrustManager" severity="informational" />
+    <issue id="InsecureBaseConfiguration" severity="informational" />
+    <issue id="ExportedService" severity="informational" />
+    <!--
+      UnusedResources: wear.xml declares the "jellywrist_watch" capability consumed
+      by the Wear OS framework (CapabilityClient) — no Kotlin reference, but the
+      resource is required for Data Layer discovery (companion protocol, DEC-013).
+    -->
+    <issue id="UnusedResources" severity="informational" />
+</lint>

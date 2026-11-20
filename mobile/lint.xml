@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!--
+      Intentional architecture decisions, kept as auditable information:
+      - InsecureBaseConfiguration: cleartext HTTP is globally permitted for self-hosted
+        LAN Jellyfin servers (http://…:8096). The app detects HTTPS then HTTP,
+        and Android cannot restrict cleartext traffic to hosts entered at runtime.
+        TLS verification remains intact (DEC-006); the choice is documented in
+        network_security_config.xml. Same as the watch app.
+    -->
+    <issue id="InsecureBaseConfiguration" severity="informational" />
+</lint>

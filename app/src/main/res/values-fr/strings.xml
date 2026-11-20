@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">JellyWrist</string>
+
+    <!-- Tile -->
+    <string name="tile_resume_title">Reprendre la lecture</string>
+    <string name="tile_no_collection">Aucune collection synchronisée</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_validating">Vérification du serveur…</string>
+    <string name="onboarding_server_address">Adresse du serveur</string>
+    <string name="onboarding_connect">Se connecter</string>
+    <string name="onboarding_new_code">Nouveau code</string>
+    <string name="onboarding_hello">Bonjour %1$s</string>
+    <string name="onboarding_auth_store_recovered">La session sécurisée est illisible. Reconnectez-vous à Jellyfin.</string>
+    <string name="onboarding_certificate_title">Certificat non reconnu</string>
+    <string name="onboarding_certificate_trust">Faire confiance</string>
+    <string name="onboarding_certificate_reject">Refuser</string>
+    <string name="onboarding_qc_unavailable_title">Quick Connect requis</string>
+    <string name="onboarding_qc_unavailable_hint">Activez Quick Connect sur votre serveur (Tableau de bord → Quick Connect), puis réessayez.</string>
+    <string name="onboarding_retry">Réessayer</string>
+    <string name="onboarding_status_phone_setup">Configuration depuis le téléphone…</string>
+    <string name="onboarding_status_approve_code">Validez ce code dans Jellyfin.</string>
+    <string name="onboarding_status_code_expired">Code expiré. Réessayez.</string>
+    <string name="onboarding_status_phone_failed">Échec de la configuration depuis le téléphone.</string>
+    <string name="onboarding_status_connection_lost">Connexion perdue. Réessayez.</string>
+    <string name="onboarding_status_unexpected_failure">Échec inattendu. Réessayez.</string>
+    <string name="onboarding_status_request_expired">Requête expirée. Réessayez.</string>
+    <string name="onboarding_error_invalid_address">Adresse invalide.</string>
+    <string name="onboarding_error_server_unreachable">Serveur injoignable.</string>
+    <string name="onboarding_error_enter_address">Saisissez une adresse.</string>
+
+    <!-- Réglages (settings) -->
+    <string name="settings_section_storage">Stockage</string>
+    <string name="settings_section_sync">Synchronisation</string>
+    <string name="settings_section_log">Journal de sync</string>
+    <string name="settings_section_account">Compte</string>
+    <string name="settings_charging_only">En charge uniquement</string>
+    <string name="settings_unmetered_only">Wi-Fi non mesuré</string>
+    <string name="settings_periodicity">Périodicité : %1$dh</string>
+    <string name="settings_sign_out">Déconnexion</string>
+    <string name="settings_available">Disponible : %1$s</string>
+    <string name="settings_decrease_quota">Diminuer le quota</string>
+    <string name="settings_increase_quota">Augmenter le quota</string>
+    <string name="settings_decrease_periodicity">Diminuer la fréquence de synchronisation</string>
+    <string name="settings_increase_periodicity">Augmenter la fréquence de synchronisation</string>
+
+
+    <!-- Téléchargements (download) -->
+    <string name="download_notification_channel">Téléchargements</string>
+
+    <!-- Écran Téléchargements -->
+    <string name="downloads_section_pending">En attente (%1$d)</string>
+    <string name="downloads_section_downloading">Téléchargements (%1$d)</string>
+    <string name="downloads_section_ready">Prêts (%1$d)</string>
+    <string name="downloads_section_errors">Erreurs (%1$d)</string>
+    <string name="downloads_empty">Aucun téléchargement</string>
+    <string name="downloads_remove_track">Supprimer la piste téléchargée</string>
+    <string name="downloads_sync_button">Synchroniser</string>
+    <string name="downloads_syncing">Synchronisation…</string>
+    <string name="downloads_queued">Synchronisation en attente</string>
+    <string name="downloads_paused">En pause — reprendra</string>
+    <string name="downloads_unplayable">Non lisible</string>
+    <string name="downloads_budget_label">Budget</string>
+    <string name="collection_detail_refresh_error">Rafraîchissement impossible : %1$s</string>
+    <string name="downloads_storage_total">sur %1$s</string>
+    <string name="downloads_metered_warning">Pas de Wi-Fi : la synchronisation passera par le réseau facturé (proxy Bluetooth) et sera lente. Continuer ?</string>
+    <string name="downloads_metered_confirm">Continuer quand même</string>
+    <string name="downloads_metered_cancel">Annuler</string>
+
+    <!-- Bibliothèque (library) -->
+    <string name="library_empty">Aucun élément</string>
+    <string name="library_tab_playlists">Playlists</string>
+    <string name="library_tab_albums">Albums</string>
+    <string name="library_tab_artists">Artistes</string>
+    <plurals name="library_track_count">
+        <item quantity="one">%1$d piste</item>
+        <item quantity="many">%1$d pistes</item>
+        <item quantity="other">%1$d pistes</item>
+    </plurals>
+    <string name="library_tab_songs">Titres</string>
+    <string name="library_random_sync_label">Sync titres aléatoires :</string>
+    <plurals name="library_random_sync_done">
+        <item quantity="one">%1$d titre enfilé — voir Téléchargements</item>
+        <item quantity="many">%1$d titres enfilés — voir Téléchargements</item>
+        <item quantity="other">%1$d titres enfilés — voir Téléchargements</item>
+    </plurals>
+    <string name="library_nav_downloads">Télécharg.</string>
+    <string name="downloads_battery_warning">Batterie faible — lancer quand meme ?</string>
+    <string name="downloads_battery_confirm">Lancer</string>
+    <string name="library_nav_settings">Réglages</string>
+
+    <!-- Lecteur (player) -->
+    <string name="player_empty">Aucune lecture en cours.\nChoisissez une collection dans la bibliothèque.</string>
+    <string name="player_unknown_title">Titre inconnu</string>
+    <string name="player_previous">Piste précédente</string>
+    <string name="player_play">Lire</string>
+    <string name="player_pause">Mettre en pause</string>
+    <string name="player_next">Piste suivante</string>
+    <string name="player_shuffle">Lecture aléatoire</string>
+    <string name="player_repeat">Répéter la liste</string>
+    <string name="player_repeat_one">Répéter la piste</string>
+
+
+    <!-- Détail collection -->
+    <string name="collection_detail_empty">Aucune piste</string>
+    <plurals name="collection_detail_size">
+        <item quantity="one">%1$s · %2$d piste</item>
+        <item quantity="many">%1$s · %2$d pistes</item>
+        <item quantity="other">%1$s · %2$d pistes</item>
+    </plurals>
+    <string name="collection_detail_pin_toggle">Synchroniser sur la montre</string>
+
+    <!-- Unités de taille (localisées — évitaient de fuir en « Go/Mo » dans la build EN) -->
+    <string name="unit_bytes_gb">Go</string>
+    <string name="unit_bytes_mb">Mo</string>
+    <string name="unit_bytes_kb">Ko</string>
+    <string name="unit_bytes_b">o</string>
+
+    <!-- États des pistes (accessibilité) -->
+    <string name="track_status_ready">Téléchargée</string>
+    <string name="track_status_to_download">À télécharger</string>
+    <string name="track_status_downloading">Téléchargement en cours</string>
+    <string name="track_status_unsupported">Non lisible</string>
+    <string name="track_status_error">Erreur de téléchargement</string>
+    <string name="track_status_pending_budget">En attente d’espace de stockage</string>
+</resources>
