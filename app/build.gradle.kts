@@ -21,10 +21,10 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        // The published package ID is deliberately retained. Changing it would make an
-        // upgrade install as a separate app and strand existing downloads, preferences,
-        // and encrypted credentials under the legacy JellyWatch identity.
-        applicationId = "com.example.jellywatch"
+        // Public package identity. It matches the source namespace and the Wearable Data
+        // Layer requirement that the watch and phone share one package ID. 0.0.1 is the
+        // first public identity, so there is no legacy installation to migrate.
+        applicationId = "com.example.jellywrist"
         minSdk = 34
         targetSdk = 36
         versionCode = 1

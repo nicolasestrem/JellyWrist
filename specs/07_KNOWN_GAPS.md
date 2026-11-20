@@ -55,10 +55,11 @@
 - Description: The 2026-09-03 fixes are covered by the JVM unit suite and were smoke-tested on
   the test watch (clean launch, no crash, correct network-policy decisions). The full
   path — pin a collection, watch bytes land in `filesDir/media_downloads`, play offline — could
-  not be exercised because the watch is signed out: `shared_prefs/jellywatch_auth.xml` holds
-  only its two Tink keysets and no session, and `databases/` contains no `jellywatch.db` at
-  all, so the app has never reached its Room layer on this install.
-- Evidence/sources: `adb run-as com.example.jellywatch` listings of `shared_prefs`,
+  not be exercised because the watch is signed out: on the pre-cutover install,
+  `shared_prefs/jellywatch_auth.xml` held only its two Tink keysets and no session, and
+  `databases/` contained no `jellywatch.db`. Current builds use the `jellywrist` identifiers
+  (DEC-016), so this evidence describes the earlier package.
+- Evidence/sources: pre-cutover `adb run-as com.example.jellywatch` listings of `shared_prefs`,
   `databases` and `files/media_downloads`, 2026-09-03.
 - Work blocked: The on-device acceptance run.
 - Resolution needed: the owner signs in on the test watch via Quick Connect, then the
@@ -79,14 +80,15 @@
 ### GAP-017 — A watch lost its session with no recorded cause
 - Type: correctness/observability defect
 - Description: The test watch was authenticated (screenshots show a populated
-  library) and was later found signed out, with `shared_prefs/jellywatch_auth.xml` holding
-  only its two Tink keysets and no `jellywatch.db` in `databases/` at all. Only two code paths
+  library) and was later found signed out, with the pre-cutover
+  `shared_prefs/jellywatch_auth.xml` holding only its two Tink keysets and no `jellywatch.db`
+  in `databases/` at all. Only two code paths
   clear the session — the Settings sign-out button and `LocalDataReset.factoryReset()`, which
   only that button calls — so the likeliest explanation is `EncryptedTokenStore`'s
   unreadable-store recovery firing, which deletes the preferences and the app's Keystore
   master key. Both outcomes leave an identical keysets-only file, and neither logged anything,
   so the two cannot be told apart after the fact.
-- Evidence/sources: `adb run-as com.example.jellywatch` listings of `shared_prefs`,
+- Evidence/sources: pre-cutover `adb run-as com.example.jellywatch` listings of `shared_prefs`,
   `databases`, `files/media_downloads`; `TokenStore.load`/`resetUnreadableStore`; call-site
   survey of `clear()`/`factoryReset()`/`signOut()` [VERIFIED 2026-09-03].
 - Why it matters: a silently destroyed session presents exactly as the reported bug. Sync and

@@ -150,7 +150,7 @@ class EncryptedTokenStore @Inject constructor(
     internal companion object {
         private const val TAG = "JellyAuth"
 
-        const val PREFS_FILE = "jellywatch_auth"
+        const val PREFS_FILE = "jellywrist_auth"
 
         private const val ANDROID_KEY_STORE = "AndroidKeyStore"
         private const val KEY_BASE_URL = "base_url"

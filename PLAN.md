@@ -2,7 +2,7 @@
 
 **Standalone Wear OS application for syncing and offline listening of music from a Jellyfin server.**
 
-> **Product identity (2026-08-11).** The public name is **JellyWrist**. The source namespace is `com.example.jellywrist`. The signed Android package `com.example.jellywatch` and the associated persistence identifiers remain unchanged so that the update preserves local data on existing installations.
+> **Product identity (2026-11-20).** The public name is **JellyWrist**. The source namespace and Android `applicationId` are `com.example.jellywrist`; persistence and scheduling identifiers use the `jellywrist` prefix (DEC-016). 0.0.1 is the first public identity, so no pre-public installation is preserved.
 
 > **Single reference document.** Merges and replaces the two previous plans (`2026-08-05_203130-wearos-jellyfin-sync.md` and the old `PLAN.md`) after **fact-checking** the disputed technical claims (3 research sub-agents: Jellyfin SDK, download endpoints, Horologist/Media3 on Wear OS).
 >
@@ -253,7 +253,7 @@ Each task is focused work. TDD when a surface is testable on the JVM (DTOs, Repo
 ```
 app/
   src/main/
-    java/com/example/jellywatch/
+    java/com/example/jellywrist/
       JellyWristApp.kt                      # Application, Hilt
       di/                                    # Hilt modules (SDK, DB, repos, media)
       data/

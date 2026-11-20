@@ -75,7 +75,7 @@ class JellyDownloadService : DownloadService(
 
     companion object {
         private const val NOTIFICATION_ID = 1
-        private const val CHANNEL_ID = "jellywatch_downloads"
-        private const val WORK_NAME = "jellywatch_download_restart"
+        private const val CHANNEL_ID = "jellywrist_downloads"
+        private const val WORK_NAME = "jellywrist_download_restart"
     }
 }

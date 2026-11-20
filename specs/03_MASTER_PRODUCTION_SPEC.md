@@ -17,15 +17,15 @@
 
 JellyWrist is a standalone Wear OS application (minSdk 34, Wear OS 5+) that synchronises music collections from a Jellyfin server to the watch's local storage and plays them fully offline over Bluetooth headphones. An **optional phone companion app** (`:mobile`) may assist with provisioning and remote management; the watch never *requires* a paired phone [VERIFIED: PLAN.md §1.1, §1.2; DEC-013 supersedes the prior "no phone companion" exclusion].
 
-## Product identity and upgrade continuity
+## Product identity and package
 
 - Public product name: **JellyWrist**
 - Store subtitle: **Offline Jellyfin music for Wear OS**
 - Visual direction: **Orbit Pulse**, an OLED-black sync loop with a music waveform, magenta-violet energy and a restrained cyan highlight.
 - Source namespace: `com.example.jellywrist`
-- Published Android application ID: `com.example.jellywatch`
+- Published Android application ID: `com.example.jellywrist`
 
-The legacy Android application ID, Room database name, encrypted preferences, DataStores, worker tags and notification channel identifiers remain unchanged. This preserves upgrades from existing JellyWatch installations and prevents data loss or duplicate background work.
+The Android application ID, Room database name, encrypted preferences, DataStores, worker tags and notification channel identifiers use the `jellywrist` identity. 0.0.1 is the first public release; no pre-public installation is preserved or migrated (DEC-016).
 
 This specification defines the v1 production contract. It covers authentication, library browsing, download/sync, offline playback, storage management, the phone companion app (DEC-013), and the corresponding data model, interfaces, and failure modes. It does not cover streaming, transcoding, or multi-server setups — those are explicitly out of scope per PLAN.md §1.3.
 
@@ -133,8 +133,8 @@ Room entities (single-module `app/`, package `com.example.jellywrist`):
 2. **AuthenticateByName (fallback):** Username + password for servers where Quick Connect is disabled.
 3. **Token storage:** Access token stored exclusively in `EncryptedSharedPreferences` backed by Android Keystore. Token is never written to Room, logs, or any non-encrypted location (REQ-005).
 4. **Startup state:** Phone and watch install their Compose roots before session I/O begins, render a loading state while bootstrap runs, then render either the authenticated graph or onboarding. Application warm-up and activity bootstrap share one serialized session read.
-5. **Unreadable session recovery:** An empty store is distinct from a recognized Keystore, encrypted-keyset, or decryption failure. For the latter, the app deletes only `jellywatch_auth.xml` and its app-owned master-key alias, preserves Room, settings, downloads, and all unrelated data, and returns to onboarding with a reconnect notice. Exception text and stored values are never logged.
-6. **Backup boundary:** Both manifests use shared backup rules that exclude `jellywatch_auth.xml` from cloud backup and device transfer because the Android Keystore key is device-bound.
+5. **Unreadable session recovery:** An empty store is distinct from a recognized Keystore, encrypted-keyset, or decryption failure. For the latter, the app deletes only `jellywrist_auth.xml` and its app-owned master-key alias, preserves Room, settings, downloads, and all unrelated data, and returns to onboarding with a reconnect notice. Exception text and stored values are never logged.
+6. **Backup boundary:** Both manifests use shared backup rules that exclude `jellywrist_auth.xml` from cloud backup and device transfer because the Android Keystore key is device-bound.
 7. **Logout:** Local token revocation + optional deletion of downloaded files (returns app to fresh-install state).
 8. **Server-side permissions:** Read-only access to media metadata and files. No server mutation beyond optional playback report submission (M5+).
 
@@ -234,7 +234,7 @@ Jellyfin endpoints consumed by the app [VERIFIED: PLAN.md §3.3]:
 
 [VERIFIED per DEC-013, 2026-08-11]
 
-The `:mobile` module is an optional phone companion app that communicates with the watch over the Wearable Data Layer. Both apps share `applicationId = "com.example.jellywatch"` and the same signing certificate — required by the Wearable Data Layer same-package rule.
+The `:mobile` module is an optional phone companion app that communicates with the watch over the Wearable Data Layer. Both apps share `applicationId = "com.example.jellywrist"` and the same signing certificate — required by the Wearable Data Layer same-package rule.
 
 **Shared layer (`:core`):** JellyfinBackend, AuthRepository, ServerRepository, TokenStore, TLS certificate pinning (PinRegistry/PinningTrustManager/CertificateFetcher), and the wire protocol (`com.example.jellywrist.wire`). The phone signs into Jellyfin via Quick Connect (extends DEC-010 — no password UI on any form factor).
 
@@ -316,7 +316,7 @@ The `:mobile` module is an optional phone companion app that communicates with t
 | **Corrupted download** | Post-download size verification vs. `Content-Length` / server metadata | File deleted; re-enqueued with backoff retry |
 | **Self-signed certificate** | TLS handshake failure | Prompt for opt-in certificate pinning; never bypass TLS globally (DEC-006) |
 | **Auth token expiry** | 401 response from Jellyfin | Re-authentication flow (Quick Connect or login) |
-| **Unreadable encrypted session** | Recognized Keystore, keyset, or decryption failure while loading `jellywatch_auth.xml` | Remove only the encrypted session preferences and app-owned key alias; preserve all other local data; show onboarding with a reconnect notice |
+| **Unreadable encrypted session** | Recognized Keystore, keyset, or decryption failure while loading `jellywrist_auth.xml` | Remove only the encrypted session preferences and app-owned key alias; preserve all other local data; show onboarding with a reconnect notice |
 
 ## Definition of done for v1
 

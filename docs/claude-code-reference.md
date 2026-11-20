@@ -52,7 +52,7 @@ CI (`.github/workflows/android.yml`) runs the public-hygiene scan, `./gradlew li
 
 `PLAN.md` is the **single reference document** — read it before designing anything. It defines the target package layout (§11), the data model (§7), the 14-task execution plan (§8), and milestones M0–M6. Superseded draft plans are intentionally absent from the public tree.
 
-Planned shape under `com.example.jellywatch/`: `di/` (Hilt modules) · `data/{jellyfin,db,repo}/` · `download/` (Media3 `DownloadService` + `ReconWorker`) · `playback/` (`MediaSessionService` + ExoPlayer) · `ui/{nav,screens}/`.
+Planned shape under `com.example.jellywrist/`: `di/` (Hilt modules) · `data/{jellyfin,db,repo}/` · `download/` (Media3 `DownloadService` + `ReconWorker`) · `playback/` (`MediaSessionService` + ExoPlayer) · `ui/{nav,screens}/`.
 
 The core of the app is the **sync engine**, not a file downloader: the user *pins collections* (playlist/album/artist) and a WorkManager pipeline converges local state toward the server in both directions — refresh metadata → diff against Room → capacity check → enqueue in Media3 `DownloadManager` → verify → purge orphans (refcounted through the `CollectionTrack` n-n table).
 

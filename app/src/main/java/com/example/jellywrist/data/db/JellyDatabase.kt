@@ -74,7 +74,7 @@ abstract class JellyDatabase : RoomDatabase() {
     abstract fun syncLogDao(): SyncLogDao
 
     companion object {
-        const val NAME = "jellywatch.db"
+        const val NAME = "jellywrist.db"
 
         /**
          * v1 → v2: `localOnly` column (default `0`) on `collections`.

@@ -6,7 +6,7 @@ Standalone **Wear OS** app that syncs music from a **Jellyfin** server to an And
 
 The Orbit Pulse brand combines a sync loop, an audio waveform, and a watch crown. The Android icons, favicons, and social visuals are collected in [docs/brand](docs/brand/README.md).
 
-The published Android package intentionally remains `com.example.jellywatch` so that the JellyWrist update preserves the data, downloads, and settings of existing installations.
+The Android application ID is `com.example.jellywrist`; 0.0.1 is the first public identity, so there is no pre-public package to upgrade from.
 
 The product and technical details live in the [unified design plan](PLAN.md).
 

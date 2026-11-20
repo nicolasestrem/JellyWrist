@@ -22,3 +22,8 @@ Keeping the signed package and persistent identifiers lets a JellyWatch installa
 - Adaptive launcher, round launcher, monochrome themed icon and notification icon use the Orbit Pulse system.
 - Brand assets are stored under `docs/brand/`.
 - Build verification must inspect the merged manifest and release APK, in addition to unit tests, lint and debug/release builds.
+
+> **Superseded in part (2026-11-20).** DEC-016 moves the `applicationId` and all `jellywatch`
+> persistence identifiers to the `jellywrist` identity. 0.0.1 was the first public release and
+> no users existed, so the upgrade-continuity rationale recorded above no longer applies. The
+> brand decision itself (name, Orbit Pulse artwork, launcher icons) remains in force.

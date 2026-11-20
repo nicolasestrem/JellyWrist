@@ -31,4 +31,4 @@ Use the generated Orbit Pulse image directly for full-colour marks. The Android 
 
 ## Upgrade compatibility
 
-The public product and source namespace are JellyWrist. The signed Android `applicationId` remains `com.example.jellywatch`, and established database, preference, worker, and notification identifiers remain unchanged. These legacy identifiers protect installed JellyWatch builds from becoming a separate app or losing their locally stored state during the rebrand update.
+The public product, source namespace, and Android `applicationId` are JellyWrist (`com.example.jellywrist`). Persistence and scheduling identifiers use the `jellywrist` prefix. 0.0.1 is the first public identity, so there is no pre-public package to preserve (DEC-016).

@@ -29,7 +29,7 @@ data class SavedQueue(
     val lastCollectionId: String?,
 )
 
-private val Context.queueDataStore: DataStore<Preferences> by preferencesDataStore(name = "jellywatch_queue")
+private val Context.queueDataStore: DataStore<Preferences> by preferencesDataStore(name = "jellywrist_queue")
 
 @Singleton
 class QueueStore @Inject constructor(

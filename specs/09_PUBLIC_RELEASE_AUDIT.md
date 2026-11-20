@@ -9,8 +9,9 @@
 Prepare the first public source release of JellyWrist (`0.0.1`) from a deliberately clean
 snapshot: no private infrastructure, identities, credentials, local automation debris,
 unpublished Git history, or privileged comment-triggered automation. The version line restarts
-at `0.0.1` / `versionCode` 1 in both modules, and the Android `applicationId` stays
-`com.example.jellywatch` by design (DEC-012) so existing installations keep their data. The
+at `0.0.1` / `versionCode` 1 in both modules, and the Android `applicationId` is
+`com.example.jellywrist` (DEC-016); 0.0.1 is the first public identity, so no pre-public
+installation is migrated. The
 release is published under the MIT License with `Copyright (c) 2026 nicolasestrem` (DEC-015).
 
 ## Findings and disposition

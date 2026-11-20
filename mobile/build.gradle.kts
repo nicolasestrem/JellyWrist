@@ -24,10 +24,10 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        // Deliberately identical to the watch :app applicationId (DEC-012). The Wearable
+        // Deliberately identical to the watch :app applicationId (DEC-016). The Wearable
         // Data Layer only delivers messages between apps with the SAME applicationId and
         // signing certificate on both devices — changing this breaks phone↔watch pairing.
-        applicationId = "com.example.jellywatch"
+        applicationId = "com.example.jellywrist"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

@@ -30,7 +30,7 @@ reports `PUBLIC-HYGIENE: index and working tree passed`.
 | Phone smoke launch | PASS | `mobile-debug.apk` installed and cold-launched on a Pixel 6 API 35 emulator; no fatal error. Pairing/Data Layer discovery was not exercised. |
 | `assembleDebug` | PASS | Watch and phone debug APKs produced. |
 | `assembleRelease` | PASS | Watch and phone release APKs produced with R8 and resource shrinking, **signed with the local release keystore** (not committed). |
-| Version metadata | PASS | All four APKs report `versionName` `0.0.1`, `versionCode` 1, `applicationId` `com.example.jellywatch` in both modules. |
+| Version metadata | PASS | All four APKs report `versionName` `0.0.1`, `versionCode` 1, `applicationId` `com.example.jellywrist` in both modules. |
 | Public hygiene | PASS | Credential, private-infrastructure, unreviewed-host, signing-material, local-configuration, packaged-app, and assistant-artifact scans pass on the staged index and the working tree. |
 | Signing material | PASS | `keystore.properties` is gitignored and no keystore, key, or credential is tracked. |
 

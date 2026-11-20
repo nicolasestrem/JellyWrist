@@ -184,7 +184,7 @@
 - Requirements/components affected: Product identity, Android launcher and themed icons, notification icon, client identification, build artifacts, documentation and upgrade continuity.
 - Compatibility or migration impact: Source namespace moves to `com.example.jellywrist`; `applicationId`, Room database name, encrypted preferences, DataStores, WorkManager names and tags, and notification channel ID remain stable.
 - Supersedes: The provisional JellyWatch public identity.
-- Superseded by: none.
+- Superseded by: DEC-016 — the `applicationId` and `jellywatch_*` persistence identifiers moved to the `jellywrist` identity (no public users existed at 0.0.1). The JellyWrist brand decision remains in force.
 - Evidence/links: Owner approval "Approve JellyWrist plan" (2026-08-11); `docs/brand/README.md`; Android adaptive icon resources.
 
 ## DEC-013 — Optional phone companion app (supersedes the "no phone companion" non-goal)
@@ -199,6 +199,7 @@
 - Compatibility or migration impact: Watch `applicationId`, Room database, encrypted preferences, DataStores, WorkManager names unchanged. Phone uses the same `applicationId` and signing key (Data Layer constraint). No data migration.
 - Supersedes: PLAN.md §1.3 exclusion "Phone companion app"; 03_MASTER_PRODUCTION_SPEC "No phone companion is required at any point"; 02_STRATEGIC_PLAN non-goal "Phone companion app".
 - Superseded by: none.
+- Note: the shared `applicationId` is now `com.example.jellywrist` per DEC-016; the same-package/same-signature requirement is unchanged.
 - Evidence/links: Owner approval "Build the companion app on the phone to go with the Wear OS app" (2026-08-11); `mobile/` module; `core/` module; `com.example.jellywrist.wire.Wire` protocol.
 
 ## DEC-014 — Watch UI redesigned from scratch (supersedes DEC-011's screen design)
@@ -228,5 +229,20 @@
 - Requirements/components affected: Release engineering, docs, repository governance; no REQ behavior change.
 - Compatibility or migration impact: The version code restarts at 1, so prior internal versionCode-3 builds cannot upgrade in place and must be uninstalled first. The `applicationId` and all legacy persistence identifiers remain unchanged per DEC-012, retaining DEC-012's upgrade continuity for installed apps.
 - Supersedes: none.
-- Superseded by: none.
+- Superseded by: DEC-016 — only the `applicationId`/legacy-identifier retention clause; the version reset, MIT license and single-root-commit publication remain in force.
 - Evidence/links: This 0.0.1 release operation; `specs/09_PUBLIC_RELEASE_AUDIT.md`; `specs/05_BUILD_REVIEW.md`.
+
+## DEC-016 — JellyWrist package identity cutover (supersedes DEC-012's applicationId retention)
+- Date: 2026-11-20
+- Status: LOCKED
+- Owner/approver: nicolasestrem
+- Context: The 0.0.1 release was prepared with the legacy `com.example.jellywatch` applicationId and `jellywatch_*` persistence identifiers to preserve upgrades from pre-public JellyWatch builds. The owner confirmed that the project has no users, so that upgrade-continuity rationale no longer applies, and the legacy identifiers would ship in the first public release as unnecessary pre-public artifacts.
+- Decision: Set `applicationId = "com.example.jellywrist"` in both `:app` and `:mobile` (identical, as required by the Wearable Data Layer same-package/same-signature rule). Rename the app-owned persistence and scheduling identifiers to the `jellywrist` identity: Room database `jellywrist.db`; encrypted preferences `jellywrist_auth.xml`; DataStores `jellywrist_settings` and `jellywrist_queue`; WorkManager tag/names `jellywrist_sync`, `jellywrist_auto_sync`, `jellywrist_download_restart`; download notification channel `jellywrist_downloads`. Current product documentation and release notes use the new identity.
+- Rationale: With no existing users, 0.0.1 can be the first public identity rather than an upgrade target for unpublished builds. Matching the applicationId to the source namespace removes a permanent legacy identifier and the associated compatibility language from a public release that never had users to preserve.
+- Alternatives considered: keep `com.example.jellywatch` (rejected — no users to preserve, and it would ship a legacy identifier in the first public release); rename the source namespace too (rejected — it is already `com.example.jellywrist`; only the applicationId and persistence names needed to change).
+- Consequences/trade-offs: 0.0.1 is a fresh application identity. Pre-public `com.example.jellywatch` builds are not upgraded in place and must be uninstalled; no public user data exists to migrate. The watch and phone remain interoperable because they share the new applicationId and signing certificate. The release tag and release are re-cut at the new identity.
+- Requirements/components affected: application packaging, Room database name, encrypted preferences, DataStores, WorkManager identifiers, notification channel, backup rules, tests, release assets and documentation. No product requirement changes.
+- Compatibility or migration impact: No migration from pre-public builds (none exist). The `com.example.jellywrist` package and `jellywrist_*` identifiers become the stable identities from 0.0.1 onward.
+- Supersedes: DEC-012's applicationId retention and the legacy-identifier clause of DEC-015. The rest of DEC-012 (brand) and DEC-015 (version reset, history replacement, MIT license) remain in force.
+- Superseded by: —
+- Evidence/links: Owner statement "there are no users" (2026-11-20); `app/build.gradle.kts`, `mobile/build.gradle.kts`, `JellyDatabase.kt`, `TokenStore.kt`, `SettingsRepository.kt`, `QueueStore.kt`, `SyncScheduler.kt`, `JellyDownloadService.kt`, `auth_backup_rules.xml`; this 0.0.1 re-cut.

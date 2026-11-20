@@ -6,13 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### Fixed
-- **Instrumented migration test can find the Room v1 schema again**: the exported v1
-  schema now lives under the current `com.example.jellywrist.data.db.JellyDatabase`
-  namespace, so `MigrationTest` no longer fails with "Cannot find the schema file in the
-  assets folder". The duplicate legacy JellyWatch schema folder was removed; the two v2
-  exports were byte-identical.
-
 ## [0.0.1] - 2026-11-20
 
 First public source release. The version line restarts at `0.0.1` (`versionCode` 1) in `:app`
@@ -29,14 +22,23 @@ ever published.
 - **Fresh repository history**: the public repository is recreated from one reviewed root
   commit. The previous private history is not published, so old commit SHAs, pull request
   numbers, branches, and CI run URLs are not valid references.
-- **DEC-012 compatibility identifiers intentionally unchanged**: the `applicationId` remains
-  `com.example.jellywatch`, and the legacy Room database, encrypted preferences, DataStore
-  files, WorkManager names/tags, and notification channel identifiers are preserved so existing
-  installations keep their data. These are deliberate, not leftovers.
+- **Public package identity (DEC-016)**: the `applicationId` is now `com.example.jellywrist`
+  in both apps, and the Room database (`jellywrist.db`), encrypted preferences
+  (`jellywrist_auth.xml`), DataStores (`jellywrist_settings`, `jellywrist_queue`),
+  WorkManager names/tags, and download notification channel use the `jellywrist` identity.
+- **Dependency updates**: AGP 9.5.1, KSP 2.3.14, coroutines 1.11.0, Coil 3.6.3,
+  slf4j 2.0.20, and current GitHub Actions versions.
 - **Documentation refreshed** for the first public release.
-- **Upgrade note**: this build's `versionCode` (1) is lower than the last internal snapshot's
-  (3), so Android will not install it over that build. Uninstall the previous installation
-  before installing this one.
+- **Install note**: 0.0.1 is the first public identity. Pre-public
+  `com.example.jellywatch` builds are a separate package and are not upgraded in place;
+  uninstall them before installing this release.
+
+### Fixed
+- **Instrumented migration test can find the Room v1 schema again**: the exported v1
+  schema now lives under the current `com.example.jellywrist.data.db.JellyDatabase`
+  namespace, so `MigrationTest` no longer fails with "Cannot find the schema file in the
+  assets folder". The duplicate legacy JellyWatch schema folder was removed; the two v2
+  exports were byte-identical.
 
 ### Security
 - **CI enforces the public-hygiene scan**: every push to `main` and every pull request runs

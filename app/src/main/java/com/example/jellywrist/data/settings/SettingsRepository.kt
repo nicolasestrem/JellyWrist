@@ -50,7 +50,7 @@ data class SyncSettings(
     }
 }
 
-private val Context.settingsDataStore: DataStore<Preferences> by preferencesDataStore(name = "jellywatch_settings")
+private val Context.settingsDataStore: DataStore<Preferences> by preferencesDataStore(name = "jellywrist_settings")
 
 /**
  * Persisted settings — port testable on the JVM (REQ-011).

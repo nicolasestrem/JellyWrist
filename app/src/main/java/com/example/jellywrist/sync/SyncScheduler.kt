@@ -34,10 +34,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /** Unique tag for sync work (WorkManager). */
-const val SYNC_WORK_TAG = "jellywatch_sync"
+const val SYNC_WORK_TAG = "jellywrist_sync"
 
 /** Name of the periodic sync work. */
-const val ONETIME_AUTO_NAME = "jellywatch_auto_sync"
+const val ONETIME_AUTO_NAME = "jellywrist_auto_sync"
 const val PERIODIC_SYNC_NAME = "periodic_sync"
 
 /** Name of the one-shot sync work (manually triggered). */

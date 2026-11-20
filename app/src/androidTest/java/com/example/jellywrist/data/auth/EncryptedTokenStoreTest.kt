@@ -94,7 +94,7 @@ class EncryptedTokenStoreTest {
     }
 
     private companion object {
-        const val PREFS_FILE = "jellywatch_auth"
+        const val PREFS_FILE = "jellywrist_auth"
         const val KEY_KEYSET_ALIAS = "__androidx_security_crypto_encrypted_prefs_key_keyset__"
     }
 }
