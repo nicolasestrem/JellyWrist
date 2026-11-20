@@ -44,13 +44,16 @@ Signer #1 certificate DN: CN=JellyWrist Release, OU=Android, O=JellyWrist, L=Par
 Signer #1 certificate SHA-256: 8e112eaf2b999f41a165b4d3f7b4ac0695475116edb3da1486c95508786288e4
 ```
 
-| Artifact | Size (bytes) | SHA-256 |
-|---|---|---|
-| `app/build/outputs/apk/release/app-release.apk` | 9,463,432 | `15F9E560DC8A2C4A9749042817A3EB7519C63C93F0A8AFB5BAB7B01C63483273` |
-| `mobile/build/outputs/apk/release/mobile-release.apk` | 3,159,979 | `9895D33899F8BDEB534E68B78723F800A29AFC4C0FDA56F8266E0D2FF33AF446` |
+| Artifact | Description |
+|---|---|
+| `app/build/outputs/apk/release/app-release.apk` | Signed watch release APK |
+| `mobile/build/outputs/apk/release/mobile-release.apk` | Signed phone release APK |
 
-The corresponding versioned assets are published on the GitHub release:
-`jellywrist-0.0.1-watch.apk`, `jellywrist-0.0.1-phone.apk`, and `SHA256SUMS-0.0.1.txt`.
+Exact SHA-256 checksums are published with the release assets
+(`SHA256SUMS-0.0.1.txt`), because AGP embeds the tagged commit in
+`META-INF/version-control-info.textproto`: the APK bytes change when the commit changes even
+though the application code does not. The versioned release assets are
+`jellywrist-0.0.1-watch.apk` and `jellywrist-0.0.1-phone.apk`.
 
 ## Not verified in this pass
 
