@@ -31,7 +31,7 @@ wearOngoing = "1.1.0"
 coreKtx = "1.19.0"
 turbine = "1.2.1"
 playServicesWearable = "19.0.0"
-navigationCompose = "2.9.3"
+navigationCompose = "2.10.2"
 kotlinxSerializationJson = "1.9.0"   # aligned with the version resolved by the Jellyfin SDK (verified: app:dependencyInsight)
 
 [libraries]
