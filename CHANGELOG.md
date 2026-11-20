@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Instrumented migration test can find the Room v1 schema again**: the exported v1
+  schema now lives under the current `com.example.jellywrist.data.db.JellyDatabase`
+  namespace, so `MigrationTest` no longer fails with "Cannot find the schema file in the
+  assets folder". The duplicate legacy JellyWatch schema folder was removed; the two v2
+  exports were byte-identical.
+
 ## [0.0.1] - 2026-11-20
 
 First public source release. The version line restarts at `0.0.1` (`versionCode` 1) in `:app`
