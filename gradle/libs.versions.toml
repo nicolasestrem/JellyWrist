@@ -16,7 +16,7 @@ securityCrypto = "1.1.0"
 hiltNavigationCompose = "1.4.0"
 androidxTestJunit = "1.3.0"
 androidxTestRunner = "1.7.0"
-room = "2.8.4"
+room = "2.8.5"
 # Pinned to the version Horologist 0.7.15 is compiled against: mixing
 # media3 1.11 with AARs compiled for 1.7.1 risks silent ABI breaks.
 media3 = "1.7.1"
